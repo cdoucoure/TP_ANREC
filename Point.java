@@ -6,9 +6,14 @@ public class Point {
 	/**
 	 * @param args
 	 */
+	
 	public LinkedList<Double> coord;
 	public GroupePoint groupe;
 	
+	public Point(){
+		this.coord=new LinkedList<Double>();
+		
+	}
 	
 	// Methode permettant de calculer la distace a un point
 	public Double distance(Point p){
@@ -27,7 +32,7 @@ public class Point {
 	
 	
 	// Methode permettant d'affecter un groupe a une point
-	public GroupePoint grouper(LinkedList<GroupePoint> g){
+	public void grouper(LinkedList<GroupePoint> g){
 		
 		GroupePoint groupe=g.getFirst();
 		Double distanceMin=new Double(g.getFirst().centre.distance(this));
@@ -38,8 +43,7 @@ public class Point {
 				groupe=p;
 			}
 		}
-		
-		return groupe;
+		this.groupe=groupe;
 	}
 
 }
