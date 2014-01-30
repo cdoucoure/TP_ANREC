@@ -1,13 +1,19 @@
 import java.awt.Color;
 import java.util.LinkedList;
 
-
-
 public class GroupePoint {
 	
 	public Centre centre;
 	public Color couleur;
 	public String nom;	
+	
+	public GroupePoint(int i){
+		this.centre= new Centre();
+		this.couleur=Color.black;
+		this.nom="Groupe" + i;
+		
+	}
+	
 	
 	
 	// Methode permettant de calculer le centre d'un groupe de points
