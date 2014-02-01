@@ -12,35 +12,21 @@ public class Point {
 	
 	public Point(){
 		this.coord=new LinkedList<Double>();
-		
 	}
 	
-	// Methode permettant de calculer la distace a un point
-	public Double distance(Point p){
-		
-		Double distance=null;
-		int i=0;
-		int longueur = coord.size();
-		Double sommeDistanceCarre=new Double(0);
-		
-		for(i=0; i<longueur; i++){
-			sommeDistanceCarre = sommeDistanceCarre + Math.pow(this.coord.get(i) - p.coord.get(i), 2);
-		}
-		distance=Math.sqrt(sommeDistanceCarre);
-		return distance;
-	}
-	
+
 	
 	// Methode permettant d'affecter un groupe a une point
-	public void grouper(LinkedList<GroupePoint> g){
-		
-		GroupePoint groupe=g.getFirst();
-		Double distanceMin=new Double(g.getFirst().centre.distance(this));
+	public void grouper(LinkedList<GroupePoint> g, int paramSim, int puissance){
+		Distance sim= new Distance();
+		GroupePoint groupe = g.getFirst();
+		Double distanceMin=new Double(sim.distance(this, groupe.centre, paramSim, puissance));
 		
 		for(GroupePoint p : g){
-			if(p.centre.distance(this)<distanceMin){
-				distanceMin=p.centre.distance(this);
+			if(sim.distance(p.centre, this, paramSim, puissance) < distanceMin){
+				distanceMin=sim.distance(p.centre, this, paramSim, puissance);
 				groupe=p;
+				System.out.println("Le point en (" + this.coord.get(0) + "," + this.coord.get(1) + ") est attribué au " + groupe.nom );
 			}
 		}
 		this.groupe=groupe;
