@@ -9,11 +9,5 @@ public class Centre extends Point{
 	public Centre(){
 		super();
 	}
-	
-	
-	
-	public void deplacer(LinkedList<Point> points){
-		
-	}
 
 }
